@@ -24,7 +24,7 @@ namespace PFMBackend.Data
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-       => options.UseSqlite($"Data Source={DbPath}");
+       => options.UseSqlite(@"Data Source=C:\Users\Robi\source\repos\PFMBackend\PFMBackend\database.db");
     }
 
 
