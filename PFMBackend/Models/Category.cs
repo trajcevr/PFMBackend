@@ -1,11 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+
 namespace PFMBackend.Models
 {
-    [Keyless]
+    
     public class Category
     {
-        public string code { get; set; }
-        public string parent_code { get; set; }
-        public string name { get; set; } 
+        [Key]
+        public string? code { get; set; }
+        [Required]
+        public string? parent_code { get; set; }
+        [Required]
+        public string? name { get; set; } 
     }
 }

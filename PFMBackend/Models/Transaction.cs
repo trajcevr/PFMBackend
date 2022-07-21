@@ -1,18 +1,27 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
-namespace PFMBackend.Models;
+using PFMBackend.Models;
+using PFMBackend.Data.Entities;
+using System.ComponentModel.DataAnnotations;
 
-[Keyless]
+
 public class Transaction
 {
-    
-    public string id { get; set; } 
-    public string beneficiary_name { get; set; }
-    public string date { get; set; }
-    public string direction { get; set; }
+    [Key]
+    public string? Id { get; set; }
+    [Required]
+    public string? BeneficiaryName { get; set; }
+    [Required]
+    public string? date { get; set; }
+    [Required]
+    public TransactionDirection direction { get; set; }
+    [Required]
     public double amount { get; set; }
-    public string description { get; set; }
-    public string currency { get; set; }
-    public string mcc { get; set; } 
-    public string kind { get; set; } 
+    [Required]
+    public string? description { get; set; }
+    [Required]
+    public string? currency { get; set; }
+    public string? mcc { get; set; }
+    [Required]
+    public TransactionKind kind { get; set; } 
 }
