@@ -1,26 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PFMBackend.Models;
 
-namespace PFMBackend.Controllers
+namespace PFMBackend.Controllers;
+
+[ApiController]
+[Route("/categories")]
+public class CategoriesController : ControllerBase
 {
-    [ApiController]
-    [Route("/categories")]
-    public class Categories
+    [HttpGet]
+    public async Task<IActionResult> getCategories()
     {
-        [HttpGet]
-        public async Task<IActionResult> getCategories()
-        {
-            return Ok("Test uspesnii transakcii");
-        }
+        return Ok("Test Uspesan kategorije");
+    }
 
-        private IActionResult Ok(string v)
-        {
-            throw new NotImplementedException();
-        }
-
-        [HttpPost("import")]
-        public async Task<IActionResult> import([FromBody] IFormFile file)
-        {
-            return Ok("Test import categories");
-        }
+    [HttpPost("import")]
+    [Consumes("application/csv")]
+    public async Task<IActionResult> import([FromBody] IEnumerable<Category> categories)
+    {
+        if (categories is null)
+            return BadRequest();
+        return Ok("Test import Categories");
     }
 }
